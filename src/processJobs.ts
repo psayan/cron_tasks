@@ -1,6 +1,5 @@
 import { CronJob } from 'cron';
 import * as Promise from 'promise';
-import * as express from 'express';
 // import * as mongoose from 'mongoose';
 
 interface cronTask {
@@ -20,7 +19,7 @@ interface cronTaskSchema {
     }
 }
 
-function processTasks(tasks: cronTask[]): void {
+export function processTasks(tasks: cronTask[]): void {
     for(let task of tasks) {
         let taskDetail: cronTaskSchema;
         // question
@@ -55,6 +54,8 @@ function processTasks(tasks: cronTask[]): void {
         addToDB(taskDetail); // Why not able to refer declared variable
     }
 }
+
+
 
 function addToDB(taskDetail: cronTaskSchema): void {
     // Add taskdetail to database
