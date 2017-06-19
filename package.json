@@ -18,6 +18,7 @@
     "@types/promise": "^7.1.30"
   },
   "dependencies": {
+    "cron": "^1.2.1",
     "mongoose": "^4.10.7",
     "promise": "^7.3.0"
   }
