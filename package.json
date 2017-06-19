@@ -1,0 +1,21 @@
+{
+  "name": "cron_tasks",
+  "version": "1.0.0",
+  "description": "Process cron jobs.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "cron",
+    "genius"
+  ],
+  "author": "psayan",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/cron": "^1.2.1",
+    "@types/mongoose": "^4.7.17",
+    "@types/promise": "^7.1.30",
+    "promise": "^7.3.0"
+  }
+}
