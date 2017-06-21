@@ -1,6 +1,6 @@
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
-import {processTasks} from './processJobs';
+import { processTasks } from './processJobs';
 
 
 const app = express();

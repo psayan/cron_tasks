@@ -16,14 +16,12 @@
     "@types/body-parser": "^1.16.3",
     "@types/cron": "^1.2.1",
     "@types/express": "^4.0.36",
-    "@types/mongoose": "^4.7.17",
-    "@types/promise": "^7.1.30"
+    "@types/mongoose": "^4.7.17"
   },
   "dependencies": {
     "body-parser": "^1.17.2",
     "cron": "^1.2.1",
     "express": "^4.15.3",
-    "mongoose": "^4.10.7",
-    "promise": "^7.3.0"
+    "mongoose": "^4.10.7"
   }
 }
