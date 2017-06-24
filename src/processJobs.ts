@@ -1,5 +1,5 @@
 import { CronJob } from 'cron';
-// import * as mongoose from 'mongoose';
+import { cronTaskSchema, addToDB } from './db';
 
 interface cronTask {
     id: string,
@@ -7,26 +7,14 @@ interface cronTask {
     task: (time: Date) => Promise<void>
 }
 
-interface cronTaskSchema {
-    id: string,
-    jobId: string,
-    startTime: Date,
-    endTime?: Date,
-    error?: {
-        message: string,
-        codes: string[]
-    }
-}
-
 export function processTasks(tasks: Set<cronTask>): void {
     for (let task of tasks) {
-        processTask(task)
+        processTask(task);
     }
 }
 
 export function processTask(task: cronTask): void {
-    // question
-    // check task schedule validity
+    // console.log(task.id);
     try {
         let job: CronJob = new CronJob(
             task.schedule,
@@ -39,34 +27,39 @@ export function processTask(task: cronTask): void {
                 addToDB(taskDetail)
                     .then(() => task.task(taskDetail.startTime))
                     .then(() => {
-                        taskDetail.endTime = new Date()
-                        return addToDB(taskDetail)
+                        taskDetail.endTime = new Date();
+                        return addToDB(taskDetail);
                     }, (err: Error) => {
-                        taskDetail.endTime = new Date()
+                        taskDetail.endTime = new Date();
                         taskDetail.error = {
                             message: err.message,
                             codes: []
                         }
-                        return addToDB(taskDetail)
+                        return addToDB(taskDetail);
                     })
                     .catch(err => {
-                        //Db Error handling
-                    })
-
-                // Do error handling
+                        console.log('DB Error: ' + err);
+                    }
+                )
             },
             () => { },
             true,
-            'Asia/India'
+            'America/Los_Angeles'
         );
     } catch (e) {
-
+        console.log(task.id + e);
     }
 }
 
-
-
-function addToDB(taskDetail: cronTaskSchema): Promise<void> {
-    // Add taskdetail to database
-    return new Promise<void>((res, rej) => { })
+let task: cronTask = {
+    id: '1',
+    schedule: '10 * * * * *',
+    task: (startTime: Date): Promise<void> => {
+        return new Promise<void>((resolve, reject) => {
+            console.log('from task: ');
+            resolve();
+        });
+    }
 }
+
+processTask(task);
