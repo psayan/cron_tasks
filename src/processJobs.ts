@@ -50,7 +50,7 @@ export function processTask(task: cronTask): void {
         console.log(task.id + e);
     }
 }
-
+/*
 let task: cronTask = {
     id: '1',
     schedule: '10 * * * * *',
@@ -62,3 +62,4 @@ let task: cronTask = {
 }
 
 processTask(task);
+*/
