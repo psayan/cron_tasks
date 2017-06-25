@@ -24,10 +24,9 @@ export function addToDB(taskDetail: cronTaskSchema): Promise<void> {
                 const db = JSON.parse(data);
                 db[taskDetail.id] = taskDetail;
                 fs.writeFile(file, JSON.stringify(db), (err) => {
-                    // console.log('Error while writing file: ');
+                    console.log('Error while writing file: ');
                     rej(err);
                 })
-                console.log('before resolve')
                 res(); //not accecpting data
             }
         )

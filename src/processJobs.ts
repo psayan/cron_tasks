@@ -56,7 +56,6 @@ let task: cronTask = {
     schedule: '10 * * * * *',
     task: (startTime: Date): Promise<void> => {
         return new Promise<void>((resolve, reject) => {
-            console.log('from task: ');
             resolve();
         });
     }
